@@ -1,0 +1,148 @@
+/* Основной контейнер карточки */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: white; /* Фон белый */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 200px;
+}
+
+/* Верхняя часть с иконками и тегами */
+.topInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.genderIcon {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genderIcon img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.infoTags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.dateTag {
+  padding: 6px 12px;
+  background-color: #f0f0f0; /* Более светлый серый фон */
+  border-radius: 9999px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.discountTag {
+  background-color: #51b27f;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Центральная часть с ценами и заголовками */
+.middleContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.prices {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.currentPrice {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007733;
+}
+
+.originalPrice {
+  font-size: 16px;
+  color: #999;
+  text-decoration: line-through;
+  margin-bottom: 2px;
+}
+
+.checkUpInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #333;
+}
+
+.checkUpTitle {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+}
+
+.checkUpName {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    height: 160px;
+    padding: 12px;
+  }
+  
+  .title {
+    font-size: 12px;
+    line-height: 1.3;
+  }
+  
+  .price {
+    .discountedPrice {
+      font-size: 16px;
+    }
+    
+    .originalPrice {
+      font-size: 11px;
+    }
+  }
+  
+  .modal {
+    .ceil {
+      font-size: 11px;
+      padding: 3px 6px;
+    }
+    
+    .floor {
+      font-size: 10px;
+      padding: 3px 6px;
+    }
+  }
+}

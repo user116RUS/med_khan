@@ -1,0 +1,168 @@
+/* Основной контейнер карточки */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #f0fdf7,
+    #d7f5e5
+  ); /* Более светлый градиент */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 200px;
+}
+
+/* Верхняя часть с иконками и тегами */
+.topInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  z-index: 2; /* Для того чтобы теги были над фоном */
+}
+
+.genderIcon {
+  width: 32px;
+  height: 32px;
+  background-color: transparent; /* В этой карточке фон иконки прозрачный */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genderIcon img {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(
+    0 1px 1px rgba(0, 0, 0, 0.1)
+  ); /* Легкая тень для иконки */
+}
+
+.infoTags {
+  display: flex;
+  flex-direction: column; /* Теги вертикально */
+  align-items: flex-end;
+  gap: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.dateTag {
+  padding: 6px 12px;
+  background-color: white;
+  border-radius: 9999px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для тега даты */
+  color: #333;
+}
+
+.discountTag {
+  background-color: #51b27f;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для тега скидки */
+}
+
+/* Центральная часть с ценами и заголовками */
+.middleContent {
+  display: flex;
+  flex-direction: column;
+  z-index: 2; /* Для того чтобы текст был над фоном */
+}
+
+.prices {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.currentPrice {
+  font-size: 24px; /* Меньший размер шрифта для этой карточки */
+  font-weight: bold;
+  color: #007733;
+}
+
+.originalPrice {
+  font-size: 16px;
+  color: #999;
+  text-decoration: line-through;
+  margin-bottom: 2px; /* Чуть меньший отступ */
+}
+
+.checkUpInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #333;
+}
+
+.checkUpTitle {
+  text-transform: uppercase;
+  font-size: 12px; /* Меньший размер шрифта */
+  font-weight: 600;
+  color: #555; /* Более темный цвет */
+}
+
+.checkUpName {
+  font-size: 18px; /* Меньший размер шрифта */
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Фоновое изображение (зеленая штука) */
+.abstractBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Заполняет всю карточку */
+  opacity: 0.7; /* Небольшая прозрачность */
+  z-index: 1; /* Под текстом и тегами */
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    height: 180px;
+    padding: 16px;
+  }
+  
+  .title {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+  
+  .price {
+    .discountedPrice {
+      font-size: 18px;
+    }
+    
+    .originalPrice {
+      font-size: 12px;
+    }
+  }
+  
+  .modal {
+    .ceil {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+    
+    .floor {
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+  }
+}

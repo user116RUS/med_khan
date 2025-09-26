@@ -1,0 +1,95 @@
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - 80:80
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf'
+    depends_on:
+      frontend:
+        condition: service_started
+      api:
+        condition: service_healthy
+
+  api: &api
+    build:
+      context: ./backend/.
+    image: medkhan-api:latest
+    container_name: Medkhan-api
+    restart: always
+    ports:
+      - '8000:8000'
+    env_file:
+      - ./backend/.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend/migrations:/app/migrations
+    develop:
+      watch:
+        - action: sync
+          path: ./backend/Medkhan
+          target: /app/Medkhan
+        - action: sync
+          path: ./tests
+          target: /app/tests
+        - action: rebuild
+          path: ./backend/pyproject.toml
+        - action: rebuild
+          path: ./backend/uv.lock
+
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:8000/api/v1/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+  frontend:
+    build:
+      context: ./frontend/.
+    image: medkhan-frontend
+    container_name: Medkhan-frontend
+    restart: always
+    ports:
+      - '3000:3000'
+
+  postgres:
+    image: postgres:17.4-bookworm
+    hostname: Medkhan-pg
+    container_name: Medkhan-pg
+    environment:
+      POSTGRES_PASSWORD: Medkhan
+      POSTGRES_USER: Medkhan
+      POSTGRES_DB: Medkhan
+    volumes:
+      - Medkhan-pg-data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: pg_isready -U Medkhan
+      interval: 2s
+      timeout: 3s
+      retries: 40
+
+  redis:
+    image: bitnami/redis:7.4
+    container_name: Medkhan-redis
+    ports:
+      - '6379:6379'
+    restart: always
+    environment:
+      ALLOW_EMPTY_PASSWORD: 'yes'
+    healthcheck:
+      test: redis-cli ping
+      interval: 2s
+      timeout: 3s
+      retries: 40
+    volumes:
+      - Medkhan-redis-data:/bitnami/redis/data
+
+volumes:
+  Medkhan-pg-data:
+  Medkhan-redis-data:

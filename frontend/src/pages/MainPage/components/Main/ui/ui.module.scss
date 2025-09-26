@@ -1,0 +1,233 @@
+.container {
+  position: relative;
+  display: flex;
+  height: 568px;
+  width: 100%;
+  align-items: flex-end;
+  overflow-x: hidden;
+
+  .geo {
+    height: 85px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 40%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    border-radius: 0 0 20px 0;
+    overflow: hidden;
+
+    .text {
+      color: gray;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+    }
+  }
+
+  .below {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    top: 25px;
+    right: 0;
+    background-color: #ddf3de;
+    height: 60px;
+  }
+
+  .green {
+    border-radius: 20px 20px 0 0;
+    background-color: #ddf3de;
+    width: 820px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 85px;
+    z-index: 5;
+  }
+
+  .bg {
+    display: flex;
+    background-color: #ddf3de;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 483px;
+    width: 100%;
+    padding: 0 4rem;
+    border-radius: 20px 0 20px 20px;
+    position: relative;
+
+    .ceil {
+      font-size: 40px;
+      color: #15b167;
+      font-weight: 600;
+      z-index: 20;
+    }
+
+    .text {
+      font-size: 22px;
+      color: gray;
+      margin-top: 34px;
+      z-index: 20;
+    }
+
+    .button {
+      margin-top: 43.68px;
+      width: 283.87px;
+      height: 52.32px;
+      white-space: nowrap;
+      border-radius: 131.58px;
+      color: white;
+      background-color: #15b167;
+      display: flex;
+      align-items: center;
+      gap: 19.74px;
+      font-size: 22px;
+      border: none;
+      justify-content: center;
+      z-index: 20;
+      cursor: pointer;
+    }
+
+    .woman {
+      position: absolute;
+      z-index: 7;
+      right: 0;
+      bottom: 0;
+    }
+
+    .womanBg {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 798.4px;
+      height: 568px;
+      z-index: 6;
+    }
+
+    .tuman {
+      position: absolute;
+      height: 100%;
+      z-index: 6;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .text {
+    font-size: 10px;
+  }
+}
+@media (max-width: 765px) {
+  .tuman {
+    display: none;
+  }
+  .container {
+    .geo {
+      width: 100%;
+      .text {
+        font-size: 10px;
+      }
+
+      .logo {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    height: auto;
+    flex-direction: column;
+
+    .below,
+    .green {
+      display: none;
+    }
+
+    .geo {
+      position: static;
+      align-self: flex-start;
+      font-size: 10px;
+      gap: 10px;
+
+      .logo {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    .bg {
+      width: 100%;
+      padding: 18px 16px;
+      height: 240px;
+      align-items: flex-start;
+      justify-content: end;
+      border-radius: 20px;
+
+      .ceil {
+        position: relative;
+        z-index: 20;
+        font-size: 20px;
+      }
+
+      .text {
+        position: relative;
+        z-index: 20;
+        margin-top: 20px;
+        font-size: 12px;
+      }
+
+      .button {
+        position: relative;
+        z-index: 20;
+        gap: 5px;
+        width: auto;
+        margin-top: 51px;
+        padding: 0 15px;
+        font-size: 10px;
+        align-self: flex-start;
+
+        img {
+          width: 20px;
+        }
+      }
+
+      .woman {
+        width: 163px;
+        height: 206px;
+        transform: translateX(0px);
+      }
+
+      .womanBg {
+        width: 100%;
+        height: 50%;
+      }
+
+      .tuman {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+// @media (max-width: 765px) {
+//   .woman {
+//     height: 500px;
+//     transform: translateX(70px);
+//   }
+
+//   .womanBg {
+//     width: 100%;
+//     height: 50%;
+//   }
+
+//   .tuman {
+//     display: none;
+//   }
+// }

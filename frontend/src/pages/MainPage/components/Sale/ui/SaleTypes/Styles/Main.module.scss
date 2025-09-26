@@ -1,0 +1,157 @@
+/* Основной контейнер карточки */
+.card {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #e2f4ec 0%, #a1d1b9 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  min-height: 450px;
+  height: 100%;
+}
+
+/* Левая часть с информацией */
+.leftContent {
+  padding: 15px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  z-index: 2;
+}
+
+/* Верхняя часть с иконками и тегами */
+.topInfo {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.genderIcon {
+  width: 36px;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.genderIcon img {
+  width: 24px;
+  height: 24px;
+}
+
+.infoTags {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 12px;
+  font-weight: 500;
+  color: #004d26;
+}
+
+.dateTag {
+  padding: 4px 12px;
+  background-color: white;
+  border-radius: 9999px;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.discountTag {
+  background-color: #51b27f;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Центральная часть с ценами и заголовками */
+.middleContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.prices {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.currentPrice {
+  font-size: 32px;
+  font-weight: bold;
+  color: #007733;
+}
+
+.originalPrice {
+  font-size: 16px;
+  color: #999;
+  text-decoration: line-through;
+  margin-bottom: 3px;
+}
+
+.saleInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #333;
+}
+
+.saleTitle {
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  color: #004d26;
+}
+
+.saleName {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Правая часть с изображением */
+.rightImage {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+.saleImage {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.05));
+}
+
+.bgImage {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  right: -50%;
+  bottom: 0;
+  z-index: -1;
+  filter: blur(50px) opacity(0.7);
+  transform: scale(1.2);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+  }
+}

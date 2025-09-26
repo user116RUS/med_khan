@@ -1,0 +1,54 @@
+# Used for post project generation tasks
+# You may delete this file!
+
+paths:
+  use_postgres:
+    enabled: true
+    paths: []
+
+  use_alembic:
+    enabled: true
+    paths:
+      - migrations
+
+  use_builtin_auth:
+    enabled: false
+    paths:
+      - Medkhan/dependencies/auth_dependencies.py
+      - Medkhan/dtos/auth_dtos.py
+      - Medkhan/routes/auth_routes.py
+      - Medkhan/utils/auth_utils.py
+
+  use_redis:
+    enabled: true
+    paths:
+      - Medkhan/services/redis
+
+  use_rabbitmq:
+    enabled: false
+    paths:
+      - Medkhan/services/rabbitmq
+
+  use_taskiq:
+    enabled: false
+    paths:
+      - Medkhan/services/taskiq
+
+  use_prometheus:
+    enabled: false
+    paths:
+      - observability/prometheus
+
+  constants:
+    requires_all:
+      - use_builtin_auth
+      - use_rabbitmq
+    paths:
+      - Medkhan/constants.py
+
+  observability:
+    requires_all:
+      - use_prometheus
+    paths:
+      - observability
+

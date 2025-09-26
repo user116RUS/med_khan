@@ -1,0 +1,106 @@
+.container {
+  margin-top: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .title {
+      font-weight: 400;
+      font-size: clamp(20px, 4vw, 40px); // адаптивный размер
+      line-height: 1.2;
+      color: black;
+    }
+  }
+}
+
+/* Основной контейнер сетки */
+.grid {
+  display: flex;
+  gap: 22px;
+  width: 100%;
+  align-items: flex-start;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .mainCard {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .rightCards {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  .smallCardsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  @media (min-width: 1200px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 16px;
+    
+    .mainCard {
+      width: 100%;
+      order: 1;
+    }
+    
+    .rightCards {
+      width: 100%;
+      flex-direction: column;
+      gap: 16px;
+      order: 2;
+      
+      .smallCardsGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+    }
+  }
+}
+
+/* Дополнительные ряды карточек */
+.additionalRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0 16px;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
