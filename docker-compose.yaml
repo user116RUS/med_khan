@@ -11,7 +11,7 @@ services:
       api:
         condition: service_healthy
 
-  api: &api
+  api:
     build:
       context: ./backend/.
     image: medkhan-api:latest
@@ -28,18 +28,6 @@ services:
         condition: service_healthy
     volumes:
       - ./backend/migrations:/app/migrations
-    develop:
-      watch:
-        - action: sync
-          path: ./backend/Medkhan
-          target: /app/Medkhan
-        - action: sync
-          path: ./tests
-          target: /app/tests
-        - action: rebuild
-          path: ./backend/pyproject.toml
-        - action: rebuild
-          path: ./backend/uv.lock
 
     healthcheck:
       test: ['CMD', 'curl', '-f', 'http://localhost:8000/api/v1/health']
