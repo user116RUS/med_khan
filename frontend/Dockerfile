@@ -5,22 +5,21 @@ WORKDIR /app
 # Копируем package файлы
 COPY package*.json ./
 
-# Устанавливаем зависимости и явно устанавливаем TypeScript если нужно
-RUN npm install && \
-    npm list typescript || npm install --save-dev typescript
+# Устанавливаем зависимости
+RUN npm install
 
 # Копируем исходный код
 COPY . .
 
-# Проверяем наличие TypeScript
-RUN npx tsc --version
-
-# Запускаем сборку
-RUN npm run build
+# Проверяем установку TypeScript и запускаем сборку
+RUN ./node_modules/.bin/tsc --version && npm run build
 
 FROM nginx:stable-alpine
 
+# Копируем собранное приложение
 COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Копируем nginx конфигурацию
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
